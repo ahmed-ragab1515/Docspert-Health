@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Detail</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Account Detail</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <td>{{ account.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ account.name }}</td>
+        </tr>
+        <tr>
+            <th>Balance</th>
+            <td>{{ account.balance }}</td>
+        </tr>
+    </table>
+    <a href="{% url 'accounts:list' %}" class="btn btn-secondary">Back to account list</a>
+</div>
+</body>
+</html>

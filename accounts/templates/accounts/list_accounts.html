@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Account List</h1>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Balance</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for account in accounts %}
+        <tr>
+            <td>{{ account.id }}</td>
+            <td>{{ account.name }}</td>
+            <td>{{ account.balance }}</td>
+            <td>
+                <a href="{% url 'accounts:detail' account.id %}" class="btn btn-info">Details</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'accounts:import' %}" class="btn btn-primary">Import Accounts</a>
+    <a href="{% url 'accounts:transfer' %}" class="btn btn-primary">Transfer Funds</a>
+</div>
+</body>
+</html>

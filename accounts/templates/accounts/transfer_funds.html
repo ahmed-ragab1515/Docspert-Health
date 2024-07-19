@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transfer Funds</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Transfer Funds</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Transfer</button>
+    </form>
+    <a href="{% url 'accounts:list' %}" class="btn btn-secondary mt-3">Back to account list</a>
+</div>
+
+<script>
+$(document).ready(function() {
+    function updateDropdowns() {
+        var fromAccountId = $('#id_from_account').val();
+        var toAccountId = $('#id_to_account').val();
+
+        // Update 'from_account' options
+        $('option', '#id_from_account').each(function() {
+            if ($(this).val() == toAccountId) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        });
+
+        // Update 'to_account' options
+        $('option', '#id_to_account').each(function() {
+            if ($(this).val() == fromAccountId) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        });
+    }
+
+    $('#id_from_account, #id_to_account').change(updateDropdowns);
+    updateDropdowns();
+});
+</script>
+</body>
+</html>
